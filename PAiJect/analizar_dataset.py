@@ -2,25 +2,26 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 
-# Descargar dataset desde GitHub
-url = "https://raw.githubusercontent.com/Justavinho/UTP-IA-CyberSecurity/refs/heads/main/PAiJect/dataset_cpu.csv"
-df = pd.read_csv(url)
+# SOLUCIÓN TEMPORAL: Usar archivo local
+df = pd.read_csv("dataset_cpu.csv")  # Mismo directorio que el script
 
-# 1. Estadísticas básicas
+# 1. Estadísticas básicas (CORRECCIÓN EN LA MODA)
+moda_result = stats.mode(df['cpu_percent'])
+moda_valor = df['cpu_percent'].mode()[0]
+
 stats_cpu = {
     "Media": df['cpu_percent'].mean(),
     "Mediana": df['cpu_percent'].median(),
-    "Moda": stats.mode(df['cpu_percent'])[0][0],
+    "Moda": moda_valor,
     "Desviación Estándar": df['cpu_percent'].std()
 }
 
-# 2. Matriz de correlación
-correlation_matrix = df.corr()
-
-# Mostrar resultados
 print("Estadísticas de Uso de CPU:")
-for key, value in stats_cpu.items():
-    print(f"{key}: {value:.2f}")
+print(f"Media: {stats_cpu['Media']:.2f}")
+print(f"Mediana: {stats_cpu['Mediana']:.2f}")
+print(f"Moda: {stats_cpu['Moda']}")
+print(f"Desviación Estándar: {stats_cpu['Desviación Estándar']:.2f}")
 
+# Matriz de correlación
 print("\nMatriz de Correlación:")
-print(correlation_matrix)
+print(df.corr())
