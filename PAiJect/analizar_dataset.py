@@ -3,7 +3,7 @@ import numpy as np
 from scipy import stats
 
 # Descargar dataset desde GitHub
-url = "https://raw.githubusercontent.com/tu_usuario/UTP-IA-Ciberseguridad/main/dataset_cpu.csv"
+url = "https://raw.githubusercontent.com/Justavinho/UTP-IA-CyberSecurity/refs/heads/main/PAiJect/dataset_cpu.csv"
 df = pd.read_csv(url)
 
 # 1. Estadísticas básicas
